@@ -1,6 +1,6 @@
-from sqlalchemy.testing.plugin.plugin_base import logging
 
-import logger
+
+import logging
 import os
 from datetime import datetime
 
