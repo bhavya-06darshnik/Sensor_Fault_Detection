@@ -46,6 +46,7 @@ class DataTransformation:
             raise CustomException(e,sys)
 
 
+
     def get_data_transformer_objects(self):
 
         try:
@@ -74,7 +75,7 @@ class DataTransformation:
 
 
         try:
-            dataframe=self.get_data(self.feature_store_file_path)
+            dataframe=self.get_data(feature_store_file_path=self.feature_store_file_path)
 
             x=dataframe.drop(columns= TARGET_COLUMN)
 
@@ -93,11 +94,11 @@ class DataTransformation:
 
             self.utils.save_object(file_path=preprocessor_path,obj=preprocessor)
 
-            train_arr = np.c[x_train_scaled, np.array(y_train)]
+            train_arr = np.c_[x_train_scaled, np.array(y_train)]
 
-            test_arr = np.c[x_test_scaled, np.array(y_test)]
+            test_arr = np.c_[x_test_scaled, np.array(y_test)]
 
-            return(train_arr,test_arr,preprocessor_path)
+            return train_arr,test_arr,preprocessor_path
 
         except Exception as e:
             raise CustomException(e,sys)
