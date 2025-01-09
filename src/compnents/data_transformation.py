@@ -47,7 +47,8 @@ class DataTransformation:
 
 
 
-    def get_data_transformer_objects(self):
+    @staticmethod
+    def get_data_transformer_objects():
 
         try:
 
@@ -90,7 +91,7 @@ class DataTransformation:
 
             preprocessor_path = self.data_transformation_config.transformed_object_file_path
 
-            os.makedirs(preprocessor_path, exist_ok=True)
+            os.makedirs(os.path.dirname(preprocessor_path), exist_ok=True)
 
             self.utils.save_object(file_path=preprocessor_path,obj=preprocessor)
 

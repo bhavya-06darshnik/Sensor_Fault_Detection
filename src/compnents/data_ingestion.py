@@ -56,6 +56,11 @@ class DataIngestion:
                 db_name = MONGO_DATABASE_NAME
             )
 
+            if sensor_data.empty:
+                raise CustomException("Exported data from MongoDB is empty. Cannot proceed.")
+
+
+
             logging.info(f"saving exported data into feature store file path :{raw_file_path}")
 
             feature_store_file_path = os.path.join(raw_file_path,'wafer_fault.csv')
@@ -72,7 +77,7 @@ class DataIngestion:
         logging.info("Entered initiated_data_ingestion method of data_integration class")
 
         try:
-            feature_store_file_path = self.export_data_into_feature_store_file_path()
+            feature_store_file_path: DataFrame = self.export_data_into_feature_store_file_path()
 
             logging.info("got the data from mongodb")
 

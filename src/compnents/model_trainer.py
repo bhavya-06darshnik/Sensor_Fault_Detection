@@ -4,6 +4,7 @@ import sys
 import pandas as pd
 import numpy as np
 from sklearn.metrics import accuracy_score
+from typing import List
 
 from xgboost import  XGBClassifier
 from sklearn.svm import SVC
@@ -46,7 +47,7 @@ class ModelTrainer:
 
             report={}
 
-            for i in range(len(list[models])):
+            for i in range(len(list(models))):
                 model=list(models.values())[i]
 
                 model.fit(x_train, y_train)
@@ -96,7 +97,7 @@ class ModelTrainer:
 
             best_model_object = self.models[best_model_name]
             
-            return best_model_name,best_model_score,best_model_object
+            return best_model_name, best_model_score, best_model_object
 
         except Exception as e:
             raise CustomException(e, sys)
@@ -155,7 +156,7 @@ class ModelTrainer:
 
 
 
-            logging.info(f"Extracting model config file path")
+            #logging.info(f"Extracting model config file path")
 
 
 
@@ -170,7 +171,7 @@ class ModelTrainer:
             logging.info(f"Extracting model config file path")
 
 
-            model_report: dict = self.evaluate_models(X=x_train, y=y_train, models=self.models)
+            model_report: dict = self.evaluate_models(x=x_train, y=y_train, models=self.models)
 
 
             ## To get best model score from dict

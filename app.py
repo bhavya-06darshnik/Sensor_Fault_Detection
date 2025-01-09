@@ -38,7 +38,7 @@ def upload():
 
             predicton_file_detail1=prediction_pipeline.run_pipeline()
 
-            lg.info("prediction completed. doenloading prediction file.")
+            lg.info("prediction completed. downloading prediction file.")
             return send_file(prediction_file_detail.prediction_file_path,
                              download_name=prediction_file_detail.prediction_file_name,
                              as_attachment=True)
