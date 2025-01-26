@@ -36,11 +36,11 @@ def upload():
         if request.method == 'POST':
             prediction_pipeline = PredictionPipeline(request)
 
-            predicton_file_detail1=prediction_pipeline.run_pipeline()
+            prediction_file_detail1=prediction_pipeline.run_pipeline()
 
             lg.info("prediction completed. downloading prediction file.")
-            return send_file(prediction_file_detail.prediction_file_path,
-                             download_name=prediction_file_detail.prediction_file_name,
+            return send_file(prediction_file_detail1.prediction_file_path,
+                             download_name=prediction_file_detail1.prediction_file_name,
                              as_attachment=True)
 
         else:
